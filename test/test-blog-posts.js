@@ -14,12 +14,12 @@ const { TEST_DATABASE_URL } = require('../config');
 
 chai.use(chaiHttp);
 
-function seedBlogPostData() {
-    console.info('seeding restaurant data');
-    const seedData = [];
-
-    for (let i = 1; i <= 10; i++) {
-        seedData.push(generateBlogPostData());
-    }
-    return Restaurant.insertMany(seedData);
+function tearDownDb() {
+    return new Promise((resolve, reject) => {
+        console.warn('Deleting database');
+        mongoose.connection
+            .dropDatabase()
+            .then(result => resolve(result))
+            .catch(err => reject(err));
+    });
 }
