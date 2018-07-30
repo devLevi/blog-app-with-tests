@@ -8,22 +8,19 @@
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
+    "globals": {
+        "it": true,
+        "before": true,
+        "beforeEach": true,
+        "afterEach": true,
+        "after": true,
+        "describe": true
+    },
     "rules": {
-        "indent": [
-            "error",
-            4
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
+        "indent": ["error", 4],
+        "linebreak-style": ["error", "unix"],
+        "quotes": ["error", "single"],
+        "semi": ["error", "always"],
+        "no-console": 0
     }
 }
