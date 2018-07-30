@@ -145,4 +145,21 @@ describe('Blog Posts API resource', function() {
                 post.author.lastName.should.equal(newPost.author.lastName);
             });
     });
+    describe('DELETE endpoint', function() {
+        it('should delete a post by id', function() {
+            let post;
+            return BlogPost.findOne()
+                .then(_post => {
+                    post = _post;
+                    return chai.request(app).delete(`/posts/${post.id}`);
+                })
+                .then(res => {
+                    res.should.have.status(204);
+                    return BlogPost.findById(post.id);
+                })
+                .then(function(_post) {
+                    res.should.not.exist(_post);
+                });
+        });
+    });
 });
